@@ -31,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject coinCollectable;
     public GameObject heighestHeightBar;
     public GameObject settingsWindow;
+    public GameObject tutorialButtons;
 
     public Sprite[] prizeButton;
     public Sprite[] musicSprite;
@@ -60,12 +61,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float maxRotSpeed;
     [SerializeField] float rotIncrease;
     [SerializeField] float rotForce;
-    float bounceForce = 490;
-    float bounceDifficulty = 1.9f;
-    float bounceDiffIncrease = 0.11f;
-    float bounceForceIncrease = 26;
-    float birdSpawnWaitMin = 3.0f;
-    float birdSpawnWaitMax = 8.5f;
+    [SerializeField] float bounceForce;
+    [SerializeField] float bounceForceIncrease;
+    [SerializeField] float bounceForceIncreasePlus;
+    [SerializeField] float bounceDifficulty;
+    [SerializeField] float bounceDiffIncrease;
+    [SerializeField] float birdSpawnWaitMin;
+    [SerializeField] float birdSpawnWaitMax;
 
     bool flip;
     bool dead;
@@ -98,12 +100,13 @@ public class PlayerScript : MonoBehaviour
 
         //PlayerPrefs.SetInt("first", 0);
 
-        if (PlayerPrefs.GetInt("first") == 0)
+        if (PlayerPrefs.GetInt("first", 0) == 0)
         {
+            tutorialButtons.SetActive(true);
+            PlayerPrefs.SetInt("first", 1);
             PlayerPrefs.SetInt("highscore", 0);
             PlayerPrefs.SetInt("highestheight", -5);
             PlayerPrefs.SetInt("coins", 0);
-            PlayerPrefs.SetInt("first", 1);
             PlayerPrefs.SetInt("selectedHead", 0);
             PlayerPrefs.SetInt("selectedTorso", 0);
             PlayerPrefs.SetInt("headMax", 0);
@@ -129,6 +132,10 @@ public class PlayerScript : MonoBehaviour
             {
                 PlayerPrefs.SetInt("torso" + i, 0);
             }
+        }
+        else
+        {
+            tutorialButtons.SetActive(false);
         }
 
         int rand;
@@ -192,11 +199,13 @@ public class PlayerScript : MonoBehaviour
         highscoreInGameText.text = "HighScore: " + PlayerPrefs.GetInt("highscore", 0);
         inGameCoinText.gameObject.SetActive(false);
 
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 30; i++)
         {
-            float height = (i * 4) + 2.5f;
-            Instantiate(coinCollectable, new Vector3(Random.Range(-72.9f, -67.1f), Random.Range(height, height + 3.5f), 0), Quaternion.identity);
+            float height = (i * 4) + 2.2f;
+            Instantiate(coinCollectable, new Vector3(Random.Range(-72.9f, -67.1f), Random.Range(height, height + 3.2f), 0), Quaternion.identity);
         }
+
+        UpdatePrizeButton();
 
         if (PlayerPrefs.GetInt("freeLootBox") == 0)
         {
@@ -262,7 +271,7 @@ public class PlayerScript : MonoBehaviour
                         {
                             flipText.text = "Back Flip\n+" + gainedScore;
                         }
-                        PlayAudio(5);
+                        PlayAudio(5, 0.3f);
 
                         flip = false;
                     }
@@ -368,6 +377,8 @@ public class PlayerScript : MonoBehaviour
         }
         while (ranDeg == 0);
 
+        StartCoroutine(HideTutorial());
+
         //gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         frozen = false;
@@ -389,7 +400,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Restart()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
         SceneManager.LoadScene("GameScene");
     }
 
@@ -399,7 +410,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Trampoline"))
             {
-                PlayAudio(1);
+                PlayAudio(1, 0.3f);
 
                 CameraShaker.Instance.ShakeOnce(4f, 0.4f, 0.2f, 0.5f);
 
@@ -415,8 +426,8 @@ public class PlayerScript : MonoBehaviour
                 gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 gameObject.transform.GetComponent<Rigidbody2D>().AddForce(transform.up * bounceForce);
 
-                bounceDifficulty += bounceDiffIncrease * Mathf.Round((flipAmount * 0.4f) + 0.11f);
-                bounceForce += bounceForceIncrease * Mathf.Round((flipAmount * 0.4f) + 0.11f);
+                bounceDifficulty += bounceDiffIncrease * Mathf.Round((flipAmount * 0.4f) + 0.1f);
+                bounceForce += bounceForceIncrease + (flipAmount * bounceForceIncreasePlus);
                 //score += 1;
                 score += gainedScore;
                 scoreText.text = "" + score;
@@ -429,7 +440,7 @@ public class PlayerScript : MonoBehaviour
 
             if(other.gameObject.CompareTag("Coin"))
             {
-                PlayAudio(2);
+                PlayAudio(2, 0.3f);
                 other.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Play");
                 Destroy(other.GetComponent<CircleCollider2D>());
 
@@ -443,6 +454,7 @@ public class PlayerScript : MonoBehaviour
 
             if(other.gameObject.CompareTag("Bird"))
             {
+                PlayAudio(6, 0);
                 Destroy(other.gameObject);
                 gameObject.transform.GetComponent<Rigidbody2D>().velocity = gameObject.transform.GetComponent<Rigidbody2D>().velocity / 2;
                 gameObject.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z + Random.Range(-30, 30));
@@ -452,6 +464,18 @@ public class PlayerScript : MonoBehaviour
                 flipText.text = "";
                 bounceForce -= bounceForceIncrease * 2;
             }
+        }
+    }
+
+    void UpdatePrizeButton()
+    {
+        if (PlayerPrefs.GetInt("coins") >= 500 || PlayerPrefs.GetInt("freeLootBox") == 0)
+        {
+            purchaseButton.GetComponent<Image>().sprite = prizeButton[0];
+        }
+        else
+        {
+            purchaseButton.GetComponent<Image>().sprite = prizeButton[1];
         }
     }
 
@@ -467,7 +491,7 @@ public class PlayerScript : MonoBehaviour
 
     public void CustomPressed()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
         StartCoroutine(transitionWait());
     }
 
@@ -490,8 +514,8 @@ public class PlayerScript : MonoBehaviour
 
     public void PurchasePressed()
     {
-        PlayAudio(0);
-        PlayAudio(3);
+        PlayAudio(0, 0);
+        PlayAudio(3, 0);
 
         if (PlayerPrefs.GetInt("coins") >= 500 || PlayerPrefs.GetInt("freeLootBox") == 0)
         {
@@ -544,6 +568,8 @@ public class PlayerScript : MonoBehaviour
             {
                 print("none left");
             }
+
+            UpdatePrizeButton();
         }
         else
         {
@@ -565,6 +591,8 @@ public class PlayerScript : MonoBehaviour
             timer = 5;
             StartCoroutine(WatchTimer());
             newHighScoreText.SetActive(false);
+
+            rotSpeed = 0;
 
             Advertisement.Banner.Hide();
 
@@ -600,16 +628,9 @@ public class PlayerScript : MonoBehaviour
                 watchAd.SetActive(false);
             }
 
-            if(PlayerPrefs.GetInt("coins") >= 500)
-            {
-                purchaseButton.GetComponent<Image>().sprite = prizeButton[0];
-            }
-            else
-            {
-                purchaseButton.GetComponent<Image>().sprite = prizeButton[1];
-            }
+            UpdatePrizeButton();
 
-            if(height >= PlayerPrefs.GetInt("highestheight"))
+            if (height >= PlayerPrefs.GetInt("highestheight"))
             {
                 PlayerPrefs.SetInt("highestheight", height);
             }
@@ -627,7 +648,7 @@ public class PlayerScript : MonoBehaviour
                 prizeSprite.transform.GetChild(3).GetComponent<Text>().text = nameHeadArray[8] + " Head";
             }*/
 
-            PlayAudio(4);
+            PlayAudio(4, 0);
             dead = true;
             deathMenu.SetActive(true);
 
@@ -644,7 +665,7 @@ public class PlayerScript : MonoBehaviour
 
     public void SoundPressed()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
         soundOn = !soundOn;
 
         if (soundOn)
@@ -661,7 +682,7 @@ public class PlayerScript : MonoBehaviour
 
     public void AdClicked(int _adType)
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
 
         ShowAdReward(_adType);
     }
@@ -712,6 +733,17 @@ public class PlayerScript : MonoBehaviour
                 else if(adType == 2)
                 {
                     //continue game
+                    frozen = false;
+                    gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+                    gameObject.transform.position = new Vector3(-70, 2.0f, 0);
+
+                    GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    GetComponent<Rigidbody2D>().angularVelocity = 0;
+
+                    dead = false;
+                    deathMenu.SetActive(false);
+                    playerCamera.transform.position = new Vector3(-70, 1, -10);
+                    rotSpeed = 0;
                 }
                 break;
             case ShowResult.Skipped:
@@ -743,14 +775,14 @@ public class PlayerScript : MonoBehaviour
 
     public void ExitButton()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
         prizeSprite.SetActive(false);
         ratePrompt.SetActive(false);
     }
 
     public void RateUsButton()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
         //open app store for rating
 
         //#if UNITY_ANDROID
@@ -767,12 +799,13 @@ public class PlayerScript : MonoBehaviour
 
     public void SettingsPressed()
     {
+        PlayAudio(0, 0);
         settingsWindow.SetActive(!settingsWindow.activeSelf);
     }
 
     public void TwitterButtonPressed()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
 
         if (PlayerPrefs.GetInt("twitterPressed") == 0)
         {
@@ -785,7 +818,7 @@ public class PlayerScript : MonoBehaviour
 
     public void FacebookButtonPressed()
     {
-        PlayAudio(0);
+        PlayAudio(0, 0);
 
         if (PlayerPrefs.GetInt("faceBookPressed") == 0)
         {
@@ -797,9 +830,10 @@ public class PlayerScript : MonoBehaviour
         faceBookManager.Share();
     }
 
-    void PlayAudio(int _i)
+    void PlayAudio(int _i, float _pitchIntensity)
     {
         audioSource.clip = audioClips[_i];
+        audioSource.pitch = Random.Range(1 - _pitchIntensity, 1 + _pitchIntensity);
         audioSource.Play();
     }
 
@@ -808,5 +842,18 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(birdSpawnWaitMin, birdSpawnWaitMax));
         Instantiate(Resources.Load("Bird"), new Vector3(0, 0, 0), Quaternion.identity);
         StartCoroutine(SpawnBird());
+    }
+
+    private IEnumerator HideTutorial()
+    {
+        yield return new WaitForSeconds(2);
+        tutorialButtons.SetActive(false);
+    }
+
+    public void MoneyCheat()
+    {
+        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + 250);
+        coinText.text = "" + PlayerPrefs.GetInt("coins");
+        UpdatePrizeButton();
     }
 }

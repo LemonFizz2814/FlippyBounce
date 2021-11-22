@@ -30,6 +30,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Advertisements.dll:
+    - UnityEngine.Advertisements.Placeholder
+    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -82,27 +85,27 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1720}
+      Script: {instanceID: 1718}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 2528}
+      Script: {instanceID: 2526}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2636}
     - Class: 114
-      Script: {instanceID: 2658}
+      Script: {instanceID: 2656}
     - Class: 114
-      Script: {instanceID: 2700}
+      Script: {instanceID: 2698}
     - Class: 114
-      Script: {instanceID: 2716}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2796}
+      Script: {instanceID: 2794}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 3022}
     - Class: 114
-      Script: {instanceID: 3110}
+      Script: {instanceID: 3108}
     - Class: 114
-      Script: {instanceID: 3406}
+      Script: {instanceID: 3404}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -151,29 +154,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1720}
+      Script: {instanceID: 1718}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 2528}
+      Script: {instanceID: 2526}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2636}
     - Class: 114
-      Script: {instanceID: 2796}
+      Script: {instanceID: 2794}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 3022}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 3032}
     - Class: 114
-      Script: {instanceID: 3110}
+      Script: {instanceID: 3108}
     - Class: 114
-      Script: {instanceID: 3406}
+      Script: {instanceID: 3404}
     - Class: 114
-      Script: {instanceID: 3818}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 3964}
+      Script: {instanceID: 3962}
     - Class: 114
-      Script: {instanceID: 4274}
+      Script: {instanceID: 4272}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -224,29 +227,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1720}
+      Script: {instanceID: 1718}
     - Class: 114
-      Script: {instanceID: 1820}
+      Script: {instanceID: 1818}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 2528}
+      Script: {instanceID: 2526}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2636}
     - Class: 114
-      Script: {instanceID: 2716}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2796}
+      Script: {instanceID: 2794}
     - Class: 114
-      Script: {instanceID: 2996}
+      Script: {instanceID: 2994}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 3022}
     - Class: 114
-      Script: {instanceID: 3110}
+      Script: {instanceID: 3108}
     - Class: 114
-      Script: {instanceID: 3406}
+      Script: {instanceID: 3404}
     - Class: 114
-      Script: {instanceID: 4568}
+      Script: {instanceID: 4566}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -432,7 +435,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: c1f270124a1d8acc67772ed61cb9cbf2
+      Hash: 4df204ff4df9377024b8af9ee70806bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerScript

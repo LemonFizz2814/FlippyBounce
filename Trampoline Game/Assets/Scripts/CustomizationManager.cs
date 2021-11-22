@@ -72,7 +72,10 @@ public class CustomizationManager : MonoBehaviour
 
         headScroll.GetComponent<Scrollbar>().value = headPos * 0.1f;
         torsoScroll.GetComponent<Scrollbar>().value = torsoPos * 0.13f; //check if 0.13 is correct
+    }
 
+    private void Awake()
+    {
         headChange();
         torsoChange();
     }
@@ -113,29 +116,33 @@ public class CustomizationManager : MonoBehaviour
         int selectedTorso = Mathf.RoundToInt(torsoScroll.GetComponent<Scrollbar>().value * 8) - 1;
 
         print("selectedHead " + selectedHead);
-        print("headArrangement[selectedHead] " + headArrangement[selectedHead]);
+        print("selectedTorso " + selectedTorso);
+        print("PlayerPrefs.GetInt(selectedHead) " + PlayerPrefs.GetInt("selectedHead"));
+        print("PlayerPrefs.GetInt(selectedTorso) " + PlayerPrefs.GetInt("selectedTorso"));
+        //print("headArrangement[selectedHead] " + headArrangement[selectedHead]);
 
-        print("PlayerPrefs.GetInt(head + selectedHead) " + PlayerPrefs.GetInt("head" + headArrangement[selectedHead]));
-        print("PlayerPrefs.GetInt(torso + selectedTorso) " + PlayerPrefs.GetInt("torso" + torsoArrangement[selectedTorso]));
+        //print("PlayerPrefs.GetInt(head + selectedHead) " + PlayerPrefs.GetInt("head" + headArrangement[selectedHead]));
+        //print("PlayerPrefs.GetInt(torso + selectedTorso) " + PlayerPrefs.GetInt("torso" + torsoArrangement[selectedTorso]));
 
-        PlayerPrefs.SetInt("selectedHead", headArrangement[selectedHead]); //+1
-        PlayerPrefs.SetInt("selectedTorso", torsoArrangement[selectedTorso]); //+1
-
-        if (PlayerPrefs.GetInt("selectedHead") == -1)
+        //if random head
+        if (selectedHead == -1)
         {
             PlayerPrefs.SetInt("ranHead", 1);
         }
         else
         {
+            PlayerPrefs.SetInt("selectedHead", headArrangement[selectedHead]); //+1
             PlayerPrefs.SetInt("ranHead", 0);
         }
 
-        if (PlayerPrefs.GetInt("selectedTorso") == -1)
+        //if random torso
+        if (selectedTorso == -1)
         {
             PlayerPrefs.SetInt("ranTorso", 1);
         }
         else
         {
+            PlayerPrefs.SetInt("selectedTorso", torsoArrangement[selectedTorso]); //+1
             PlayerPrefs.SetInt("ranTorso", 0);
         }
 

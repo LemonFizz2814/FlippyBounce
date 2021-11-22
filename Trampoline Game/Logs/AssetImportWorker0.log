@@ -1,0 +1,163 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.2f1 (8fd9074bf66c) revision 9427207'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19043.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 16234 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+D:\2020.3.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Administrator/Downloads/FlippyBounce/Trampoline Game
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+64434
+Successfully changed project path to: C:/Users/Administrator/Downloads/FlippyBounce/Trampoline Game
+C:/Users/Administrator/Downloads/FlippyBounce/Trampoline Game
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 66.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.2f1 (8fd9074bf66c)
+[Subsystems] Discovering subsystems at path D:/2020.3.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Downloads/FlippyBounce/Trampoline Game/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1b83)
+    Vendor:   
+    VRAM:     6052 MB
+    Driver:   30.0.14.9676
+Initialize mono
+Mono path[0] = 'D:/2020.3.2f1/Editor/Data/Managed'
+Mono path[1] = 'D:/2020.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/2020.3.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56712
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/2020.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000821 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 38.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.448 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.005551 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.724 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 67.8 MB.
+System memory in use after: 67.9 MB.
+
+Unloading 123 unused Assets to reduce memory usage. Loaded Objects now: 1869.
+Total: 1.835400 ms (FindLiveObjects: 0.163900 ms CreateObjectMapping: 0.064100 ms MarkObjects: 1.526400 ms  DeleteObjects: 0.079700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites/Foreground.png
+  artifactKey: Guid(b1a8496192e4c5d4c98e8690358463e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Foreground.png using Guid(b1a8496192e4c5d4c98e8690358463e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed787e964badf443b4e1db3b7011ae4') in 0.089490 seconds
+  Import took 0.093800 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 40.625737 seconds.
+  path: Assets/Sprites/Buttons/MusicOff.png
+  artifactKey: Guid(2586454ddc743624897dd78b7a48ac4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Buttons/MusicOff.png using Guid(2586454ddc743624897dd78b7a48ac4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4e974e66272fddb3d4d12a575159bef') in 0.013298 seconds
+  Import took 0.016841 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Sprites/Buttons/MusicOffClicked.png
+  artifactKey: Guid(5d56802737511be449516336f8031b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Buttons/MusicOffClicked.png using Guid(5d56802737511be449516336f8031b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c1c35e5d64d8ca77fcf21fda731c657') in 0.012795 seconds
+  Import took 0.015613 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Sprites/Buttons/MusicOff.png
+  artifactKey: Guid(2586454ddc743624897dd78b7a48ac4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Buttons/MusicOff.png using Guid(2586454ddc743624897dd78b7a48ac4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4e974e66272fddb3d4d12a575159bef') in 0.011853 seconds
+  Import took 0.015090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001198 seconds.
+  path: Assets/Sprites/Buttons/MusicOffClicked.png
+  artifactKey: Guid(5d56802737511be449516336f8031b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Buttons/MusicOffClicked.png using Guid(5d56802737511be449516336f8031b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c1c35e5d64d8ca77fcf21fda731c657') in 0.012009 seconds
+  Import took 0.014134 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.100578 seconds.
+  path: Assets/Sprites/Background.png
+  artifactKey: Guid(a90fe45d219da84479c3f13ffc6a304c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Background.png using Guid(a90fe45d219da84479c3f13ffc6a304c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fc39271ee90a23f61a67ad9a5d6fdbf') in 0.015566 seconds
+  Import took 0.020023 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000244 seconds.
+  path: Assets/Sprites/SettingsBackground.png
+  artifactKey: Guid(966beebfb086aad439e6b8ee7e07cff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/SettingsBackground.png using Guid(966beebfb086aad439e6b8ee7e07cff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '206da54ec70f5170ecd04ad56669509e') in 0.010527 seconds
+  Import took 0.014087 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/Sprites/Background.png
+  artifactKey: Guid(a90fe45d219da84479c3f13ffc6a304c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Background.png using Guid(a90fe45d219da84479c3f13ffc6a304c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fc39271ee90a23f61a67ad9a5d6fdbf') in 0.014531 seconds
+  Import took 0.016358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Sprites/SettingsBackground.png
+  artifactKey: Guid(966beebfb086aad439e6b8ee7e07cff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/SettingsBackground.png using Guid(966beebfb086aad439e6b8ee7e07cff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '206da54ec70f5170ecd04ad56669509e') in 0.009408 seconds
+  Import took 0.011379 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.191333 seconds.
+  path: Assets/Sprites/Icon.pdn
+  artifactKey: Guid(b06bd30a660167c4587419e7899f8481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Icon.pdn using Guid(b06bd30a660167c4587419e7899f8481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4645654cf6f602858c47e0ea33bc701b') in 0.003530 seconds
+  Import took 0.006606 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003314 seconds.
+  path: Assets/Sprites/Icon.pdn
+  artifactKey: Guid(b06bd30a660167c4587419e7899f8481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Icon.pdn using Guid(b06bd30a660167c4587419e7899f8481) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4645654cf6f602858c47e0ea33bc701b') in 0.002182 seconds
+  Import took 0.004590 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
